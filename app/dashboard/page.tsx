@@ -88,25 +88,25 @@ export default function DashboardPage({
         {/* Summary cards */}
         <div className="grid grid-cols-3 gap-4">
           <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
-            <p className="text-gray-500 text-sm">Spent This Month</p>
+            <p className="text-gray-700 text-sm">Spent This Month</p>
             <p className="text-2xl font-bold text-gray-900 mt-1">{fmt(totals.total)}</p>
-            <p className="text-xs text-gray-400 mt-1">{totals.tx_count} transactions</p>
+            <p className="text-xs text-gray-600 mt-1">{totals.tx_count} transactions</p>
           </div>
           <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
-            <p className="text-gray-500 text-sm">Daily Average</p>
+            <p className="text-gray-700 text-sm">Daily Average</p>
             <p className="text-2xl font-bold text-gray-900 mt-1">{fmt(dailyAvg)}</p>
           </div>
           <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
-            <p className="text-gray-500 text-sm">Top Category</p>
+            <p className="text-gray-700 text-sm">Top Category</p>
             {topCat ? (
               <div className="flex items-center gap-2 mt-1">
                 <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: topCat.color }} />
                 <p className="text-xl font-bold text-gray-900 truncate">{topCat.display_name}</p>
               </div>
             ) : (
-              <p className="text-2xl font-bold text-gray-400 mt-1">—</p>
+              <p className="text-2xl font-bold text-gray-600 mt-1">—</p>
             )}
-            {topCat && <p className="text-xs text-gray-400 mt-1">{fmt(topCat.total)}</p>}
+            {topCat && <p className="text-xs text-gray-600 mt-1">{fmt(topCat.total)}</p>}
           </div>
         </div>
 
@@ -117,9 +117,9 @@ export default function DashboardPage({
             <Link href="/transactions" className="text-indigo-600 text-sm hover:underline">View all</Link>
           </div>
           {recent.length === 0 ? (
-            <div className="px-5 py-10 text-center text-gray-400 space-y-3">
+            <div className="px-5 py-10 text-center text-gray-600 space-y-3">
               <p className="text-4xl">🏦</p>
-              <p className="font-medium text-gray-500">No transactions yet</p>
+              <p className="font-medium text-gray-700">No transactions yet</p>
               <p className="text-sm">
                 <Link href="/settings" className="text-indigo-600 hover:underline">Import a CSV</Link> to start tracking.
               </p>
@@ -131,7 +131,7 @@ export default function DashboardPage({
                   <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: txn.category_color ?? '#9ca3af' }} />
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-gray-800 truncate">{txn.merchant_name ?? txn.name}</p>
-                    <p className="text-xs text-gray-400">{txn.category_display_name ?? 'Uncategorized'} · {txn.date}</p>
+                    <p className="text-xs text-gray-600">{txn.category_display_name ?? 'Uncategorized'} · {txn.date}</p>
                   </div>
                   <p className={`text-sm font-semibold ${txn.amount > 0 ? 'text-gray-900' : 'text-green-600'}`}>
                     {txn.amount > 0 ? '-' : '+'}{fmt(Math.abs(txn.amount))}

@@ -34,7 +34,7 @@ export default function CategoriesClient() {
         <label className="text-sm text-gray-600 font-medium">Month</label>
         <input type="month" value={month} onChange={e => setMonth(e.target.value)} className="border border-gray-200 rounded-lg px-3 py-1.5 text-sm text-gray-900" />
       </div>
-      {loading ? <div className="text-center py-12 text-gray-400">Loading…</div> : spending.length === 0 ? <div className="text-center py-12 text-gray-400">No spending data for this month.</div> : (
+      {loading ? <div className="text-center py-12 text-gray-600">Loading…</div> : spending.length === 0 ? <div className="text-center py-12 text-gray-600">No spending data for this month.</div> : (
         <>
           <div className="grid grid-cols-2 gap-6">
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
@@ -52,8 +52,8 @@ export default function CategoriesClient() {
               <h3 className="font-semibold text-gray-800 mb-4">By Amount</h3>
               <ResponsiveContainer width="100%" height={280}>
                 <BarChart data={spending} layout="vertical" margin={{ left: 80 }}>
-                  <XAxis type="number" tickFormatter={v => `$${v}`} tick={{ fontSize: 11 }} />
-                  <YAxis type="category" dataKey="display_name" width={80} tick={{ fontSize: 11 }} />
+                  <XAxis type="number" tickFormatter={v => `$${v}`} tick={{ fontSize: 11, fill: '#1f2937' }} />
+                  <YAxis type="category" dataKey="display_name" width={80} tick={{ fontSize: 11, fill: '#1f2937' }} />
                   <Tooltip formatter={v => fmt(Number(v))} />
                   <Bar dataKey="total_spent" radius={[0, 4, 4, 0]}>{spending.map(e => <Cell key={e.id} fill={e.color} />)}</Bar>
                 </BarChart>
@@ -62,7 +62,7 @@ export default function CategoriesClient() {
           </div>
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
             <table className="w-full text-sm">
-              <thead className="bg-gray-50 text-gray-500 text-xs uppercase tracking-wide">
+              <thead className="bg-gray-50 text-gray-700 text-xs uppercase tracking-wide">
                 <tr><th className="px-5 py-3 text-left">Category</th><th className="px-5 py-3 text-right">Spent</th><th className="px-5 py-3 text-right">% of Total</th><th className="px-5 py-3 text-right">Transactions</th><th className="px-5 py-3"></th></tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
@@ -76,13 +76,13 @@ export default function CategoriesClient() {
                       )}
                     </td>
                     <td className="px-5 py-3 text-right font-medium">{fmt(cat.total_spent)}</td>
-                    <td className="px-5 py-3 text-right text-gray-500">{total > 0 ? ((cat.total_spent / total) * 100).toFixed(1) : 0}%</td>
-                    <td className="px-5 py-3 text-right text-gray-500">{cat.tx_count}</td>
+                    <td className="px-5 py-3 text-right text-gray-700">{total > 0 ? ((cat.total_spent / total) * 100).toFixed(1) : 0}%</td>
+                    <td className="px-5 py-3 text-right text-gray-700">{cat.tx_count}</td>
                     <td className="px-5 py-3 text-right">
                       {editing === cat.id ? (
-                        <div className="flex gap-2 justify-end"><button onClick={() => saveEdit(cat.id)} className="text-indigo-600 text-xs hover:underline">Save</button><button onClick={() => setEditing(null)} className="text-gray-400 text-xs hover:underline">Cancel</button></div>
+                        <div className="flex gap-2 justify-end"><button onClick={() => saveEdit(cat.id)} className="text-indigo-600 text-xs hover:underline">Save</button><button onClick={() => setEditing(null)} className="text-gray-600 text-xs hover:underline">Cancel</button></div>
                       ) : (
-                        <button onClick={() => { setEditing(cat.id); setEditName(cat.display_name); setEditColor(cat.color); }} className="text-gray-400 text-xs hover:text-indigo-600">Edit</button>
+                        <button onClick={() => { setEditing(cat.id); setEditName(cat.display_name); setEditColor(cat.color); }} className="text-gray-600 text-xs hover:text-indigo-600">Edit</button>
                       )}
                     </td>
                   </tr>

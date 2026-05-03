@@ -41,10 +41,10 @@ export default function BudgetsClient({ categories }: { categories: Category[] }
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <p className="text-gray-500 text-sm">{budgets.length} budget{budgets.length !== 1 ? 's' : ''} set for {month}</p>
+        <p className="text-gray-700 text-sm">{budgets.length} budget{budgets.length !== 1 ? 's' : ''} set for {month}</p>
         <button onClick={() => { setShowModal(true); setEditingId(null); }} className="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium py-2 px-4 rounded-lg">+ Add Budget</button>
       </div>
-      {loading ? <div className="text-center py-12 text-gray-400">Loading…</div> : budgets.length === 0 ? <div className="text-center py-12 text-gray-400">No budgets yet. Add one above.</div> : (
+      {loading ? <div className="text-center py-12 text-gray-600">Loading…</div> : budgets.length === 0 ? <div className="text-center py-12 text-gray-600">No budgets yet. Add one above.</div> : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {budgets.map(b => (
             <div key={b.id} className={`bg-white rounded-xl shadow-sm border p-5 ${b.is_over_threshold ? 'border-amber-200' : 'border-gray-100'}`}>
@@ -55,14 +55,14 @@ export default function BudgetsClient({ categories }: { categories: Category[] }
                   {b.is_over_threshold && <span className="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-medium">Alert</span>}
                 </div>
                 <div className="flex gap-2">
-                  <button onClick={() => openEdit(b)} className="text-gray-400 text-xs hover:text-indigo-600">Edit</button>
-                  <button onClick={async () => { await fetch(`/api/budgets/${b.id}`, { method: 'DELETE' }); fetchBudgets(); }} className="text-gray-400 text-xs hover:text-red-500">Delete</button>
+                  <button onClick={() => openEdit(b)} className="text-gray-600 text-xs hover:text-indigo-600">Edit</button>
+                  <button onClick={async () => { await fetch(`/api/budgets/${b.id}`, { method: 'DELETE' }); fetchBudgets(); }} className="text-gray-600 text-xs hover:text-red-500">Delete</button>
                 </div>
               </div>
               <div className="w-full bg-gray-100 rounded-full h-2 mb-2">
                 <div className={`h-2 rounded-full transition-all ${barColor(b.percent_used)}`} style={{ width: `${Math.min(b.percent_used * 100, 100)}%` }} />
               </div>
-              <div className="flex justify-between text-sm text-gray-500"><span>{fmt(b.spent)} spent</span><span>{fmt(b.monthly_limit)} limit</span></div>
+              <div className="flex justify-between text-sm text-gray-700"><span>{fmt(b.spent)} spent</span><span>{fmt(b.monthly_limit)} limit</span></div>
             </div>
           ))}
         </div>

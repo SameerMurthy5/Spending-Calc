@@ -14,14 +14,14 @@ export default function DashboardMonthPicker({ currentMonth }: { currentMonth: s
     <div className="flex items-center gap-3">
       <button
         onClick={() => router.push(`/dashboard?month=${prev}`)}
-        className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 text-gray-500 text-sm"
+        className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 text-gray-700 text-sm"
       >
         ‹
       </button>
       <span className="text-sm font-semibold text-gray-700 w-32 text-center">{label}</span>
       <button
         onClick={() => router.push(`/dashboard?month=${next}`)}
-        className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 text-gray-500 text-sm"
+        className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 text-gray-700 text-sm"
       >
         ›
       </button>

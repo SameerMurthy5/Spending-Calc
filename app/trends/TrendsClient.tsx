@@ -30,12 +30,12 @@ export default function TrendsClient() {
       </div>
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
         <h3 className="font-semibold text-gray-800 mb-6">Monthly Spending</h3>
-        {loading ? <div className="h-72 flex items-center justify-center text-gray-400">Loading…</div> : (
+        {loading ? <div className="h-72 flex items-center justify-center text-gray-600">Loading…</div> : (
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={chartData} margin={{ top: 5, right: 20, bottom: 5, left: 10 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-              <XAxis dataKey="label" tick={{ fontSize: 12 }} />
-              <YAxis tickFormatter={v => `$${v}`} tick={{ fontSize: 12 }} />
+              <XAxis dataKey="label" tick={{ fontSize: 12, fill: '#1f2937' }} />
+              <YAxis tickFormatter={v => `$${v}`} tick={{ fontSize: 12, fill: '#1f2937' }} />
               <Tooltip formatter={v => fmt(Number(v))} labelFormatter={l => `Month: ${l}`} />
               <Line type="monotone" dataKey="total" stroke="#6366f1" strokeWidth={2.5} dot={{ r: 4, fill: '#6366f1' }} activeDot={{ r: 6 }} />
             </LineChart>
@@ -44,7 +44,7 @@ export default function TrendsClient() {
       </div>
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
         <table className="w-full text-sm">
-          <thead className="bg-gray-50 text-gray-500 text-xs uppercase tracking-wide">
+          <thead className="bg-gray-50 text-gray-700 text-xs uppercase tracking-wide">
             <tr><th className="px-5 py-3 text-left">Month</th><th className="px-5 py-3 text-right">Total Spent</th><th className="px-5 py-3 text-left pl-8">Relative</th></tr>
           </thead>
           <tbody className="divide-y divide-gray-50">

@@ -50,8 +50,8 @@ export default function TransactionsClient({ categories, accounts }: { categorie
         </div>
       </div>
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-        <div className="px-5 py-3 border-b border-gray-100"><p className="text-sm text-gray-500">{total} transaction{total !== 1 ? 's' : ''}</p></div>
-        {loading ? <div className="py-12 text-center text-gray-400">Loading…</div> : transactions.length === 0 ? <div className="py-12 text-center text-gray-400">No transactions found.</div> : (
+        <div className="px-5 py-3 border-b border-gray-100"><p className="text-sm text-gray-700">{total} transaction{total !== 1 ? 's' : ''}</p></div>
+        {loading ? <div className="py-12 text-center text-gray-600">Loading…</div> : transactions.length === 0 ? <div className="py-12 text-center text-gray-600">No transactions found.</div> : (
           <div className="divide-y divide-gray-50">
             {transactions.map(txn => (
               <div key={txn.id} className="flex items-center px-5 py-3 gap-4 hover:bg-gray-50">
@@ -60,7 +60,7 @@ export default function TransactionsClient({ categories, accounts }: { categorie
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-gray-800 truncate">{txn.merchant_name ?? txn.name}</p>
-                  <p className="text-xs text-gray-400">{txn.account_name} · {txn.date}</p>
+                  <p className="text-xs text-gray-600">{txn.account_name} · {txn.date}</p>
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-xs px-2 py-0.5 rounded-full font-medium" style={{ backgroundColor: (txn.category_color ?? '#9ca3af') + '20', color: txn.category_color ?? '#9ca3af' }}>{txn.category_display_name ?? 'Other'}</span>
@@ -74,7 +74,7 @@ export default function TransactionsClient({ categories, accounts }: { categorie
         {pages > 1 && (
           <div className="flex items-center justify-center gap-2 px-5 py-4 border-t border-gray-100">
             <button onClick={() => fetch_(page - 1)} disabled={page <= 1} className="text-sm px-3 py-1 rounded border disabled:opacity-40">Prev</button>
-            <span className="text-sm text-gray-500">Page {page} of {pages}</span>
+            <span className="text-sm text-gray-700">Page {page} of {pages}</span>
             <button onClick={() => fetch_(page + 1)} disabled={page >= pages} className="text-sm px-3 py-1 rounded border disabled:opacity-40">Next</button>
           </div>
         )}
