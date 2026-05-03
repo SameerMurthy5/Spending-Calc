@@ -14,6 +14,15 @@ export function getCategories(month?: string): Category[] {
       GROUP BY c.id ORDER BY total_spent DESC
     `).all(month) as Category[];
   }
+  // Only return categories that have at least one transaction (used in dropdowns)
+  return getDb().prepare(`
+    SELECT c.* FROM categories c
+    WHERE EXISTS (SELECT 1 FROM transactions t WHERE t.category_id = c.id)
+    ORDER BY c.display_name
+  `).all() as Category[];
+}
+
+export function getAllCategories(): Category[] {
   return getDb().prepare('SELECT * FROM categories ORDER BY display_name').all() as Category[];
 }
 
