@@ -74,13 +74,13 @@ export default function BudgetsClient({ categories }: { categories: Category[] }
             <div className="space-y-3">
               {!editingId && (
                 <div><label className="text-sm text-gray-600 block mb-1">Category</label>
-                  <select value={formCategoryId} onChange={e => setFormCategoryId(e.target.value)} className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm">
+                  <select value={formCategoryId} onChange={e => setFormCategoryId(e.target.value)} className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900">
                     <option value="">Select category…</option>
                     {availableCategories.map(c => <option key={c.id} value={c.id}>{c.display_name}</option>)}
                   </select>
                 </div>
               )}
-              <div><label className="text-sm text-gray-600 block mb-1">Monthly Limit ($)</label><input type="number" value={formLimit} onChange={e => setFormLimit(e.target.value)} placeholder="e.g. 500" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm" /></div>
+              <div><label className="text-sm text-gray-600 block mb-1">Monthly Limit ($)</label><input type="number" value={formLimit} onChange={e => setFormLimit(e.target.value)} placeholder="e.g. 500" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-900" /></div>
               <div><label className="text-sm text-gray-600 block mb-1">Alert at ({formThreshold}%)</label><input type="range" min={50} max={100} value={formThreshold} onChange={e => setFormThreshold(e.target.value)} className="w-full" /></div>
             </div>
             <div className="flex gap-2 mt-5">

@@ -32,7 +32,7 @@ export default function CategoriesClient() {
     <div className="space-y-6">
       <div className="flex items-center gap-3">
         <label className="text-sm text-gray-600 font-medium">Month</label>
-        <input type="month" value={month} onChange={e => setMonth(e.target.value)} className="border border-gray-200 rounded-lg px-3 py-1.5 text-sm" />
+        <input type="month" value={month} onChange={e => setMonth(e.target.value)} className="border border-gray-200 rounded-lg px-3 py-1.5 text-sm text-gray-900" />
       </div>
       {loading ? <div className="text-center py-12 text-gray-400">Loading…</div> : spending.length === 0 ? <div className="text-center py-12 text-gray-400">No spending data for this month.</div> : (
         <>
@@ -70,7 +70,7 @@ export default function CategoriesClient() {
                   <tr key={cat.id} className="hover:bg-gray-50">
                     <td className="px-5 py-3">
                       {editing === cat.id ? (
-                        <div className="flex items-center gap-2"><input type="color" value={editColor} onChange={e => setEditColor(e.target.value)} className="w-7 h-7 rounded cursor-pointer" /><input type="text" value={editName} onChange={e => setEditName(e.target.value)} className="border rounded px-2 py-1 text-sm" /></div>
+                        <div className="flex items-center gap-2"><input type="color" value={editColor} onChange={e => setEditColor(e.target.value)} className="w-7 h-7 rounded cursor-pointer" /><input type="text" value={editName} onChange={e => setEditName(e.target.value)} className="border rounded px-2 py-1 text-sm text-gray-900" /></div>
                       ) : (
                         <div className="flex items-center gap-2"><span className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: cat.color }} />{cat.display_name}</div>
                       )}

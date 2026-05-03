@@ -22,7 +22,7 @@ export default function TrendsClient() {
     <div className="space-y-6">
       <div className="flex items-center gap-3">
         <label className="text-sm text-gray-600 font-medium">Show</label>
-        <select value={months} onChange={e => setMonths(Number(e.target.value))} className="border border-gray-200 rounded-lg px-3 py-1.5 text-sm">
+        <select value={months} onChange={e => setMonths(Number(e.target.value))} className="border border-gray-200 rounded-lg px-3 py-1.5 text-sm text-gray-900">
           <option value={6}>Last 6 months</option>
           <option value={12}>Last 12 months</option>
           <option value={24}>Last 24 months</option>
