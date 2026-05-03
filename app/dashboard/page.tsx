@@ -36,7 +36,12 @@ export default function DashboardPage({
     WHERE substr(date,1,7) = ? AND pending = 0
   `).get(month) as any;
 
-  const dailyAvg = totals.total / Math.max(new Date().getDate(), 1);
+  // For the current month use days elapsed so far; for past months use all days in that month
+  const isCurrentMonth = month === currentMonth;
+  const daysInMonth = isCurrentMonth
+    ? new Date().getDate()
+    : new Date(parseInt(month.slice(0, 4)), parseInt(month.slice(5, 7)), 0).getDate();
+  const dailyAvg = totals.total / Math.max(daysInMonth, 1);
 
   const topCat = db.prepare(`
     SELECT c.display_name, c.color, SUM(t.amount) as total
